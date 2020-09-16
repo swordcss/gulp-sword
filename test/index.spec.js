@@ -1,10 +1,23 @@
 const { expect } = require("chai");
 
+const path = require("path");
+
 const File = require("vinyl");
 
 const sword = require("../src/index");
 
 describe("gulp-sword", () => {
+  it("should change the extension", () => {
+    const fakeFile = new File({
+      contents: Buffer.from(".a{width:100%;}"),
+      path: "/fake/path/style.sw",
+    });
+    const stream = sword();
+    stream.write(fakeFile);
+    stream.on("data", (file) => {
+      expect(path.extname(file.path)).to.equal(".css");
+    });
+  });
   it("should return the same file", () => {
     const fakeFile = { isNull: () => true };
     const stream = sword();
