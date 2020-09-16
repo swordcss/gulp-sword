@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/swordcss/gulp-sword#readme",
   "dependencies": {
+    "plugin-error": "^1.0.1",
     "replace-ext": "^2.0.0",
     "swordcss": "^0.1.0",
     "through2": "^4.0.2"
