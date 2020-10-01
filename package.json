@@ -1,6 +1,6 @@
 {
   "name": "gulp-sword",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Compile SwordCSS to CSS",
   "main": "src/index.js",
   "scripts": {
