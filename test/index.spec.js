@@ -3,6 +3,7 @@ const { expect } = require("chai");
 const path = require("path");
 
 const File = require("vinyl");
+const PluginError = require("plugin-error");
 
 const sword = require("../src/index");
 
@@ -25,6 +26,16 @@ describe("gulp-sword", () => {
     stream.on("data", (file) => {
       expect(file).to.equal(fakeFile);
     });
+  });
+  it("should throw an error", () => {
+    expect(() => {
+      const stream = sword();
+      const fakeStream = {
+        isNull: () => false,
+        isStream: () => true,
+      };
+      stream.write(fakeStream);
+    }).to.throw(PluginError);
   });
   it("should return compiled CSS", () => {
     const fakeFile = new File({

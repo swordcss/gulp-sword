@@ -6,9 +6,12 @@ module.exports = (opts) => {
   return through.obj((file, enc, cb) => {
     if (file.isNull()) return cb(null, file);
     if (file.isStream())
-      throw new PluginError(
-        "gulp-sword",
-        "Streams not supported at the moment"
+      cb(
+        new PluginError(
+          "gulp-sword",
+          "Streams are not supported at the moment"
+        ),
+        file
       );
     const sword = require("swordcss")(opts);
     const compiled = sword.compile(file.contents.toString());
