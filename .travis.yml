@@ -2,4 +2,5 @@ language: node_js
 node_js:
   - 12
   - 14
+before_script: npm install -g swordcss@latest
 after_script: npm run coverage
