@@ -11,8 +11,20 @@
 
 ## Installation
 
-`npm i gulp-sword`
+```
+$ npm install -D gulp-sword
+```
 
 ### Usage
 
-Use it like you would anyother Gulp plugin.
+```javascript
+const { src, dest } = require("gulp");
+
+const sword = require("gulp-sword");
+
+exports.css = () => {
+    return src("./src/**/*.sw")
+        .pipe(sword({ ...myConfigOptionsHere }))
+        .pipe(dest("./dist/css"))
+}
+```
